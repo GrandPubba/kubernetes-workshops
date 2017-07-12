@@ -65,16 +65,14 @@ curl http://127.0.0.1:10080/secure
 ```
 
 ```
-curl -u user http://127.0.0.1:10080/login
+TOKEN=$(curl http://127.0.0.1:10180/login -u user | jq -r '.token')
 ```
 
 > Type "password" at the prompt.
 
 ```
-curl -H "Authorization: Bearer <token>" http://127.0.0.1:10080/secure
+curl -H "Authorization: Bearer $TOKEN" http://127.0.0.1:10080/secure
 ```
-
-> Use the JWT token from the previous login.
 
 ## Exercise: View the logs of a Pod
 
